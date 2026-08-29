@@ -132,6 +132,42 @@ user-generated content ever reaches a page.
 
 ## Deploying
 
-A standard Next.js app — every page prerenders at build time, and the only
-server-side work is the contact action. Set `NEXT_PUBLIC_SITE_URL` so canonical
-URLs, `sitemap.xml` and `robots.txt` point at the real domain.
+Needs a **Node.js runtime** — not static hosting. `output: "export"` drops two
+things this site depends on: Server Actions (the contact form is one) and
+`headers()` (the entire CSP lives in `next.config.ts`). Both fail silently.
+
+Requires **Node 20.9+**, pinned in `engines`. A host defaulting to Node 18 is
+the most common first-deploy failure and the error does not name the cause.
+
+### Vercel
+
+1. Import the repo at [vercel.com/new](https://vercel.com/new) — the framework
+   is detected, nothing to configure.
+2. Set **Node.js Version** to 20.x or 22.x in Project Settings.
+3. Add the environment variables below.
+4. Deploy, then add the domain under Settings → Domains.
+
+### Environment
+
+| Variable | Unset behaviour |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonicals fall back to localhost, **and `robots.txt` disallows all crawling** — a deliberate guard so a misconfigured deploy is never indexed |
+| `RESEND_API_KEY` | The form reports success and only writes the enquiry to the server log |
+| `CONTACT_FROM_EMAIL` | As above. Must be an address at a domain verified with Resend |
+
+The mail variables matter more than they look. Without them the form still
+*appears* to work — that fallback exists so previews are not broken, which means
+in production it silently swallows enquiries. Set both, then send yourself a
+test message before pointing anyone at the site.
+
+### Other platforms
+
+Netlify works via its Next runtime; Cloudflare via OpenNext; any VPS via
+`npm ci && npm run build && npm start` behind a reverse proxy.
+
+### Before making it public
+
+The copy is still a placeholder persona (see **Before you launch** above) and
+`SITE.email` does not exist, so enquiries have nowhere to arrive. Until that is
+fixed, deploy with Vercel's Deployment Protection enabled so the site is
+reviewable but not public and not indexable.

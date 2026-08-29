@@ -58,9 +58,13 @@ export function PinnedService({ service, index }: { service: Service; index: num
             // Scroll-linked readouts, written directly to the DOM because this
             // fires on every scroll frame.
             bar.style.transform = `scaleX(${self.progress})`;
+            // Four panels have three transitions, not four. Bucketing progress
+            // into `panels.length` slices drifts the readout against what is
+            // actually on screen — it announced 01 while panel 2 was visible.
+            // Counting transitions puts the number back on the panel.
             const current = Math.min(
               panels.length,
-              Math.floor(self.progress * panels.length) + 1,
+              Math.round(self.progress * (panels.length - 1)) + 1,
             );
             const label = String(current).padStart(2, "0");
             if (step.textContent !== label) step.textContent = label;

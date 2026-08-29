@@ -17,12 +17,23 @@ export const SITE = {
 } as const;
 
 /**
- * Absolute origin for canonical URLs, the sitemap and robots.txt. Falls back to
- * the production domain so a preview build never emits `undefined` into a
- * canonical tag.
+ * Absolute origin for canonical URLs, the sitemap and robots.txt.
+ *
+ * Set `NEXT_PUBLIC_SITE_URL` at deploy. The localhost fallback is deliberate:
+ * an unconfigured deploy that guessed at a real-looking domain would publish
+ * canonical tags and a sitemap pointing at a site somebody else owns. A
+ * localhost URL is obviously wrong and gets noticed; a plausible wrong domain
+ * does not.
  */
 export function siteUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://marenvale.co";
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+
+  // Vercel exposes the production host without a scheme.
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+
+  return "http://localhost:3000";
 }
 
 export const NAV = [
@@ -73,8 +84,8 @@ export const TIMELINE = [
   },
   {
     year: "2021",
-    title: "Certification, then apprenticeship",
-    body: "ICF-accredited training, then two years co-facilitating under a coach with thirty years on me. Most of what I know came from the second part.",
+    title: "Training, then apprenticeship",
+    body: "Formal coach training, then two years co-facilitating alongside someone far more experienced. Most of what I know came from the second part.",
   },
   {
     year: "2023",

@@ -9,6 +9,43 @@ around scroll as the primary interaction.
 - **FAQ** (`/faq`)
 - **Contact** (`/contact`)
 
+## Before you launch
+
+**The copy that ships with this repo is a placeholder persona.** "Maren Vale",
+the biography, the timeline and the journal posts were written to build the site
+against, not to describe a real coach. Replace them before this is pointed at a
+real domain:
+
+| What | Where |
+| --- | --- |
+| Name, role, tagline, email, phone, location | `SITE` in `src/lib/content.ts` |
+| Biography and "who this is for" copy | `src/app/page.tsx` |
+| Career timeline | `TIMELINE` in `src/lib/content.ts` |
+| Services, pricing, process | `SERVICES` / `PROCESS` in `src/lib/content.ts` |
+| Journal posts | `POSTS` in `src/lib/content.ts` |
+| FAQ | `FAQ_SECTIONS` in `src/lib/content.ts` |
+| Practice facts | `PRACTICE_FACTS` in `src/app/page.tsx` |
+
+Two of those need more care than a find-and-replace.
+
+**Credentials.** The site deliberately claims no accreditation anywhere. The
+About page lists how the practice operates instead — client cap, engagement
+length, location. Accreditation is the one claim on a coaching site a
+prospective client will actually check, and naming a body the coach is not
+registered with is a legal and professional problem rather than a copy mistake.
+Add real credentials to `PRACTICE_FACTS` once you have the exact designation and
+year, and only what you could evidence on request.
+
+**Contact details.** `SITE.email` and `SITE.phone` are placeholders — the phone
+number is in the reserved `555` range and the domain is not registered to this
+project. The contact form delivers to `SITE.email`, so an unreplaced address
+means enquiries go nowhere.
+
+Also set `NEXT_PUBLIC_SITE_URL`. Without it, canonical URLs, `sitemap.xml` and
+`robots.txt` fall back to `localhost` — wrong, but visibly wrong, which is the
+point: guessing at a plausible domain would publish SEO signals pointing at a
+site somebody else owns.
+
 ## Stack
 
 - **Next.js 16** (App Router, Turbopack) + React 19, TypeScript, Tailwind CSS v4

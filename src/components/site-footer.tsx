@@ -60,8 +60,8 @@ export function SiteFooter() {
         </div>
 
         <p className="mt-16 border-t border-[var(--paper)]/15 pt-8 text-xs text-[var(--paper)]/40">
-          © {new Date().getFullYear()} {SITE.name}. ICF-accredited. Coaching is not a substitute
-          for therapy or medical care.
+          © {new Date().getFullYear()} {SITE.name}. Coaching is not a substitute for therapy
+          or medical care.
         </p>
       </div>
     </footer>

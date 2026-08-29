@@ -12,11 +12,24 @@ export const metadata: Metadata = {
     "A small coaching practice in Oakland — six-month one-on-one engagements and keynotes on the cost of a career that only makes sense from the outside.",
 };
 
-const CREDENTIALS = [
-  { label: "ICF-accredited", detail: "Associate Certified Coach, 2021" },
-  { label: "Two-year apprenticeship", detail: "Co-facilitation under Dr. Nomi Haas" },
+/**
+ * PLACEHOLDER CONTENT — replace before this site goes live.
+ *
+ * These are facts about how the practice operates, deliberately not
+ * credentials. Accreditations are the one thing on a coaching site a
+ * prospective client will actually verify, and claiming one the coach does not
+ * hold is a real problem rather than a copy problem — so this block asserts
+ * nothing that could be false.
+ *
+ * When you have the genuine credentials, put them here: the accrediting body
+ * and the exact designation ("ICF — Associate Certified Coach, 2021"), training
+ * hours, supervision. Anything you would be comfortable being asked to evidence.
+ */
+const PRACTICE_FACTS = [
   { label: "Twelve clients, capped", detail: "Deliberately, permanently" },
-  { label: "60+ engagements", detail: "Since 2021, across four sectors" },
+  { label: "Six months, then an ending", detail: "No open-ended retainers" },
+  { label: "Oakland, California", detail: "Video by default, walking sessions if you're local" },
+  { label: "Confidential, without exception", detail: "Nothing from a session is shared or written about" },
 ];
 
 export default function AboutPage() {
@@ -71,10 +84,10 @@ export default function AboutPage() {
       <section className="border-t border-[var(--rule)] py-24 sm:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
-            <h2 className="display text-3xl sm:text-4xl">The credentials part</h2>
+            <h2 className="display text-3xl sm:text-4xl">How the practice runs</h2>
           </Reveal>
           <dl className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {CREDENTIALS.map((item, i) => (
+            {PRACTICE_FACTS.map((item, i) => (
               <Reveal key={item.label} delay={i}>
                 <div className="border-t border-[var(--ink)] pt-4">
                   <dt className="text-base font-medium">{item.label}</dt>

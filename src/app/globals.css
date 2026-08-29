@@ -3,36 +3,57 @@
 /*
  * Sheeba Frank Charles — design tokens.
  *
- * A warm editorial palette: ink on paper, terracotta as the single accent, deep
- * green held in reserve for the hero wash. Two typefaces, both self-hosted by
- * next/font: Fraunces for display, DM Sans for everything else.
+ * Cool stone ground with a deep forest accent. The previous palette was warm
+ * cream with a terracotta accent, which is the single most recognisable
+ * signature of machine-generated design right now — a real cost for a brand
+ * whose whole job is to read as considered and human.
+ *
+ * Every value below was solved rather than picked: each text token clears
+ * WCAG AA (4.5:1) against every ground it is actually used on. The lowest
+ * ratio in the system is 4.64. Opacity modifiers are deliberately absent —
+ * stacking one on an already-soft colour is what produced six failures in the
+ * previous palette, and the compounding is invisible in the source.
  */
 :root {
-  --ink: #14110f;
-  --ink-soft: #3a332e;
-  --paper: #f7f2ea;
-  --paper-deep: #ede4d6;
-  --sand: #e0d3c0;
-  --clay: #b8563a;
-  --clay-soft: #d98b6c;
-  --moss: #3f5145;
-  --gold: #a8834e;
-  --rule: rgba(20, 17, 15, 0.12);
+  --bone: #eff0ec;
+  --bone-deep: #e2e4de;
+  --ink: #0f130e;
+  --ink-soft: #3b423a;
+
+  /* The only muted text colour. AA on bone (5.50) and bone-deep (4.91).
+     Secondary hierarchy comes from size and weight, never from opacity. */
+  --muted: #5b6259;
+
+  /* Accent. AAA on both grounds, so it is safe at any size including 11px
+     uppercase kickers. */
+  --forest: #1d4034;
+
+  /* Only ever used on --forest (4.64), never on a light ground. */
+  --sage: #8fac96;
+
+  /* Sparing warm highlight. AA on both light grounds (5.22 / 4.66). */
+  --brass: #7c5f21;
+
+  --rule: rgba(15, 19, 14, 0.14);
+  --rule-strong: rgba(15, 19, 14, 0.32);
+
+  /* Text on the forest ground. */
+  --on-forest: #eff0ec;
+  --on-forest-muted: #b3c3b7;
 }
 
 @theme inline {
   --color-ink: var(--ink);
-  --color-paper: var(--paper);
-  --color-clay: var(--clay);
+  --color-bone: var(--bone);
+  --color-forest: var(--forest);
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-display), ui-serif, Georgia, serif;
 }
 
 body {
-  background: var(--paper);
+  background: var(--bone);
   color: var(--ink);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  /* Long-form pages read better with slightly closed tracking on a warm ground. */
   letter-spacing: -0.005em;
 }
 
@@ -41,8 +62,8 @@ body {
 }
 
 ::selection {
-  background: var(--clay);
-  color: var(--paper);
+  background: var(--forest);
+  color: var(--on-forest);
 }
 
 .display {
@@ -50,6 +71,15 @@ body {
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 0.98;
+}
+
+/*
+ * Product names carry hyphens ("one-on-one"). At display sizes a mid-word
+ * break lands on the largest type on the page, so never break these.
+ */
+.display--nobreak {
+  hyphens: none;
+  overflow-wrap: normal;
 }
 
 /* GSAP writes the horizontal offset here every frame; hint the compositor. */
@@ -67,12 +97,32 @@ p {
   text-wrap: pretty;
 }
 
+/*
+ * Journal cover art. The gradient alone reads as a CSS default; a fine grain
+ * over the top gives it the tooth of a printed ground, which is what stops it
+ * looking like a placeholder next to real photography.
+ */
+.cover-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 3px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--sand);
+  background: var(--bone-deep);
   border-radius: 8px;
 }

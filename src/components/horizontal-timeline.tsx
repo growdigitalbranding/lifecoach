@@ -80,11 +80,11 @@ export function HorizontalTimeline() {
     <section
       ref={sectionRef}
       aria-labelledby="timeline-heading"
-      className="relative overflow-hidden border-t border-[var(--rule)] bg-[var(--paper-deep)]"
+      className="relative overflow-hidden border-t border-[var(--rule)] bg-[var(--bone-deep)]"
     >
       <div className="flex h-dvh min-h-[36rem] flex-col justify-center py-16">
         <div className="mx-auto w-full max-w-6xl px-6">
-          <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">The path here</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">The path here</p>
           <h2 id="timeline-heading" className="display mt-4 text-4xl sm:text-5xl">
             Ten years, condensed
           </h2>
@@ -109,7 +109,7 @@ export function HorizontalTimeline() {
                 key={entry.year}
                 className="w-[19rem] shrink-0 border-t border-[var(--ink)] pt-5 sm:w-[26rem]"
               >
-                <span className="display block text-5xl text-[var(--clay)]">
+                <span className="display block text-5xl text-[var(--forest)]">
                   {entry.year}
                 </span>
                 <h3 className="mt-4 text-lg font-medium">{entry.title}</h3>
@@ -125,7 +125,7 @@ export function HorizontalTimeline() {
           <div className="h-px w-full bg-[var(--rule)]" aria-hidden="true">
             <div
               ref={progressRef}
-              className="h-px w-full origin-left scale-x-0 bg-[var(--clay)]"
+              className="h-px w-full origin-left scale-x-0 bg-[var(--forest)]"
             />
           </div>
         </div>

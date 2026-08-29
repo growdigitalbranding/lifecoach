@@ -33,7 +33,7 @@ export function AboutHero() {
   return (
     <section
       ref={ref}
-      className="relative flex h-dvh min-h-[38rem] items-end overflow-hidden bg-[var(--paper)]"
+      className="relative flex h-dvh min-h-[38rem] items-end overflow-hidden bg-[var(--bone)]"
     >
       {/* 1 — static ground */}
       <div
@@ -41,7 +41,7 @@ export function AboutHero() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 90% at 72% 18%, #efe3d1 0%, var(--paper) 55%, var(--paper) 100%)",
+            "radial-gradient(118% 88% at 74% 16%, #dfe4dc 0%, var(--bone) 58%, var(--bone) 100%)",
         }}
       />
 
@@ -49,13 +49,13 @@ export function AboutHero() {
       <Parallax distance={26} className="absolute inset-0">
         <div
           className="absolute right-[-10%] top-[6%] h-[34rem] w-[34rem] rounded-full opacity-40 blur-3xl"
-          style={{ background: "radial-gradient(circle, #d9a17e 0%, transparent 68%)" }}
+          style={{ background: "radial-gradient(circle, #9fb7a6 0%, transparent 68%)" }}
         />
       </Parallax>
       <Parallax distance={-16} className="absolute inset-0">
         <div
           className="absolute left-[-14%] bottom-[-6%] h-[28rem] w-[28rem] rounded-full opacity-35 blur-3xl"
-          style={{ background: "radial-gradient(circle, #7d9484 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #b9ac86 0%, transparent 70%)" }}
         />
       </Parallax>
 
@@ -69,7 +69,7 @@ export function AboutHero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(78deg, var(--paper) 0%, rgba(247,242,234,0.88) 34%, rgba(247,242,234,0.15) 68%, transparent 100%)",
+            "linear-gradient(78deg, var(--bone) 0%, rgba(239,240,236,0.9) 34%, rgba(239,240,236,0.16) 68%, transparent 100%)",
         }}
       />
 
@@ -83,7 +83,7 @@ export function AboutHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: reduced ? 0 : 0.6, delay: reduced ? 0 : 0.1 }}
-          className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]"
+          className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]"
         >
           {SITE.role} · {SITE.location.split(" — ")[0]}
         </motion.p>
@@ -121,7 +121,7 @@ export function AboutHero() {
           </p>
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 self-start border-b border-[var(--ink)] pb-1 text-sm font-medium transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)] sm:self-auto"
+            className="inline-flex items-center gap-2 self-start border-b border-[var(--ink)] pb-1 text-sm font-medium transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)] sm:self-auto"
           >
             See how it works
             <span aria-hidden="true">→</span>

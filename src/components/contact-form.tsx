@@ -7,7 +7,7 @@ import { submitEnquiry, type EnquiryState } from "@/app/contact/actions";
 const INITIAL: EnquiryState = { status: "idle" };
 
 const FIELD =
-  "w-full border-b border-[var(--rule)] bg-transparent py-3 text-[15px] outline-none transition-colors placeholder:text-[var(--ink-soft)]/45 focus:border-[var(--clay)]";
+  "w-full border-b border-[var(--rule)] bg-transparent py-3 text-[15px] outline-none transition-colors placeholder:text-[var(--muted)] focus:border-[var(--forest)]";
 
 /**
  * The conversion page gets the least motion on the site.
@@ -59,7 +59,7 @@ export function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration }}
-            className="border-l-2 border-[var(--clay)] bg-[var(--clay)]/5 py-3 pl-4 text-sm text-[var(--clay)]"
+            className="border-l-2 border-[var(--forest)] bg-[var(--forest)]/5 py-3 pl-4 text-sm text-[var(--forest)]"
           >
             {state.message}
           </motion.p>
@@ -108,6 +108,7 @@ export function ContactForm() {
         hint="A few sentences is plenty. There's no right way to write this."
         error={state.fieldErrors?.message}
         duration={duration}
+        note="Nothing you write here is shared, quoted, or used in a talk."
       >
         <textarea
           id="message"
@@ -125,10 +126,21 @@ export function ContactForm() {
         <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
+      <p className="text-[13px] text-[var(--muted)]">
+        What happens to what you write here is set out in the{" "}
+        <a
+          href="/privacy"
+          className="border-b border-[var(--rule)] pb-0.5 transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
+        >
+          privacy notice
+        </a>
+        .
+      </p>
+
       <button
         type="submit"
         disabled={pending}
-        className="group inline-flex items-center gap-3 bg-[var(--ink)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--paper)] transition-colors hover:bg-[var(--clay)] disabled:opacity-60"
+        className="group inline-flex items-center gap-3 bg-[var(--forest)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--on-forest)] transition-opacity hover:opacity-88 disabled:opacity-60"
       >
         {pending ? "Sending" : "Send it"}
         <span
@@ -145,12 +157,19 @@ export function ContactForm() {
 function Field({
   label,
   hint,
+  note,
   error,
   duration,
   children,
 }: {
   label: string;
   hint?: string;
+  /**
+   * Reassurance shown *under* the control, where `hint` sits above it. The
+   * confidentiality promise used to live only in the fourth FAQ section; the
+   * moment that anxiety peaks is with a cursor in the message box.
+   */
+  note?: string;
   error?: string;
   duration: number;
   children: React.ReactElement<{ id?: string }>;
@@ -161,8 +180,9 @@ function Field({
       <label htmlFor={id} className="text-xs uppercase tracking-[0.18em] text-[var(--ink-soft)]">
         {label}
       </label>
-      {hint && <p className="mt-1 text-[13px] text-[var(--ink-soft)]/70">{hint}</p>}
+      {hint && <p className="mt-1 text-[13px] text-[var(--muted)]">{hint}</p>}
       <div className="mt-2">{children}</div>
+      {note && <p className="mt-2 text-[13px] text-[var(--forest)]">{note}</p>}
       <AnimatePresence>
         {error && (
           <motion.p
@@ -170,7 +190,7 @@ function Field({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration }}
-            className="overflow-hidden text-[13px] text-[var(--clay)]"
+            className="overflow-hidden text-[13px] text-[var(--forest)]"
           >
             <span className="block pt-2">{error}</span>
           </motion.p>

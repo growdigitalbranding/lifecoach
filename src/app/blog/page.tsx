@@ -16,7 +16,7 @@ export default function BlogPage() {
     <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
       <header>
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">Journal</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">Journal</p>
         </Reveal>
         <Reveal delay={1}>
           <h1 className="display mt-6 max-w-3xl text-[clamp(2.5rem,6.5vw,5rem)]">

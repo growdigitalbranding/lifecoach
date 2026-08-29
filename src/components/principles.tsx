@@ -70,7 +70,7 @@ export function Principles() {
       className="border-t border-[var(--rule)] py-24 sm:py-32"
     >
       <div className="mx-auto max-w-6xl px-6">
-        <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">How I work</p>
+        <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">How I work</p>
         <h2 id="principles-heading" className="display mt-4 max-w-2xl text-4xl sm:text-5xl">
           Four things I will not negotiate on
         </h2>
@@ -78,13 +78,13 @@ export function Principles() {
         <div className="relative mt-16 pl-8 sm:pl-14">
           {/* Track and the drawn rule that runs inside it. */}
           <div className="absolute left-0 top-0 h-full w-px bg-[var(--rule)]" aria-hidden="true">
-            <div ref={lineRef} className="h-full w-px origin-top bg-[var(--clay)]" />
+            <div ref={lineRef} className="h-full w-px origin-top bg-[var(--forest)]" />
           </div>
 
           <ol className="space-y-16">
             {PRINCIPLES.map((principle) => (
               <li key={principle.n} data-principle className="grid gap-4 sm:grid-cols-12 sm:gap-8">
-                <span className="display text-3xl text-[var(--clay)] sm:col-span-2">
+                <span className="display text-3xl text-[var(--forest)] sm:col-span-2">
                   {principle.n}
                 </span>
                 <div className="sm:col-span-10">

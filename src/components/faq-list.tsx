@@ -66,7 +66,7 @@ export function FaqList() {
                 {active && (
                   <motion.span
                     layoutId="faq-active"
-                    className="absolute -left-4 top-0 h-full w-px bg-[var(--clay)]"
+                    className="absolute -left-4 top-0 h-full w-px bg-[var(--forest)]"
                     transition={{ duration: reduced ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
                   />
                 )}
@@ -75,7 +75,7 @@ export function FaqList() {
                   onClick={() => jumpTo(section.id)}
                   aria-current={active ? "true" : undefined}
                   className={`text-left text-sm transition-colors ${
-                    active ? "text-[var(--ink)]" : "text-[var(--ink-soft)]/70 hover:text-[var(--ink)]"
+                    active ? "text-[var(--ink)]" : "text-[var(--muted)] hover:text-[var(--ink)]"
                   }`}
                 >
                   {section.label}
@@ -118,7 +118,7 @@ export function FaqList() {
                         <span className="text-[15px] font-medium sm:text-base">{item.q}</span>
                         <motion.span
                           aria-hidden="true"
-                          className="mt-1 shrink-0 text-[var(--clay)]"
+                          className="mt-1 shrink-0 text-[var(--forest)]"
                           animate={{ rotate: open ? 45 : 0 }}
                           transition={{ duration: reduced ? 0 : 0.25, ease: [0.16, 1, 0.3, 1] }}
                         >

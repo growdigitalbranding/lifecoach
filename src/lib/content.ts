@@ -27,6 +27,68 @@ export const SITE = {
  * localhost URL is obviously wrong and gets noticed; a plausible wrong domain
  * does not.
  */
+/**
+ * Booking link for the free intro call.
+ *
+ * Set this to a Cal.com or Calendly URL and the site grows a direct-booking
+ * path: the header CTA and every "book a call" link point at it, and the
+ * contact page offers picking a time alongside writing a message. Leave it
+ * empty and everything falls back to the contact form, exactly as before.
+ *
+ * Booking a free 30-minute call currently takes four steps — find the link,
+ * write a paragraph, wait for a reply, agree a time. A scheduling link
+ * collapses that to one, which matters most for the people who were only
+ * briefly brave enough to start.
+ */
+export const BOOKING_URL = "";
+
+/**
+ * Client testimonials.
+ *
+ * Empty by design. Every section that renders these hides itself when the
+ * array is empty, so the site shows nothing rather than something invented —
+ * a fabricated endorsement attached to a real practice is not a placeholder,
+ * it is a lie a client could be asked to stand behind.
+ *
+ * Three is the useful number. Attribution should be as specific as the person
+ * consented to: a first name, a role and a sector beats "J.D., entrepreneur".
+ * If the practice is new, quotes about the intro call itself are honest and
+ * still persuasive — label them as such.
+ */
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  /** Optional: ties the quote to one service on that service's section. */
+  service?: "one-on-one" | "keynote";
+};
+
+export const TESTIMONIALS: Testimonial[] = [];
+
+/**
+ * Training, accreditation, supervision, insurance.
+ *
+ * Empty by design, and the About page omits the whole block while it stays
+ * that way. Coaching is unregulated, which is exactly why buyers lean on the
+ * recognised proxies — so silence here costs something. Fill it in with only
+ * what could be evidenced on request: the body, the designation, the year.
+ * Never name a body you are not registered with.
+ */
+export const CREDENTIALS: { label: string; detail: string }[] = [];
+
+/**
+ * Portrait.
+ *
+ * A path under /public, e.g. "/sheeba.jpg". While this is empty the hero keeps
+ * its generative field; set it and a real photograph takes the space instead.
+ *
+ * This is the highest-leverage single addition to the site. Coaching is a
+ * relationship purchase — the visitor is deciding whether they want to spend
+ * twenty-four hours in a room with this person, and right now they are being
+ * asked to decide that without ever seeing a face.
+ */
+export const PORTRAIT: { src: string; alt: string } | null = null;
+
 export function siteUrl(): string {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL;
   if (explicit) return explicit.replace(/\/$/, "");
@@ -39,7 +101,7 @@ export function siteUrl(): string {
 }
 
 export const NAV = [
-  { href: "/", label: "About" },
+  { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/blog", label: "Journal" },
   { href: "/faq", label: "FAQ" },

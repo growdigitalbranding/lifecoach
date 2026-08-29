@@ -37,7 +37,7 @@ export default function FaqPage() {
       />
 
       <header className="mx-auto mb-20 max-w-6xl px-6">
-        <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">FAQ</p>
+        <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">FAQ</p>
         <h1 className="display mt-6 max-w-3xl text-[clamp(2.5rem,6.5vw,5rem)]">
           The questions people actually ask.
         </h1>
@@ -46,7 +46,7 @@ export default function FaqPage() {
           the right thing for you. If something isn&apos;t here,{" "}
           <a
             href={`mailto:${SITE.email}`}
-            className="border-b border-[var(--ink)] pb-0.5 text-[var(--ink)] transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)]"
+            className="border-b border-[var(--ink)] pb-0.5 text-[var(--ink)] transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
           >
             just ask me directly
           </a>
@@ -64,7 +64,7 @@ export default function FaqPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-6 inline-flex items-center gap-3 bg-[var(--ink)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--paper)] transition-colors hover:bg-[var(--clay)]"
+            className="mt-6 inline-flex items-center gap-3 bg-[var(--forest)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--on-forest)] transition-opacity hover:opacity-88"
           >
             Book an intro call
             <span aria-hidden="true">→</span>

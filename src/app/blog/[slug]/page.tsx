@@ -55,8 +55,8 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
     <ReadingProgress minutes={post.readingMinutes}>
       <article className="pb-24">
         <header className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-          <div className="flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-[var(--ink-soft)]/70">
-            <span className="text-[var(--clay)]">{post.category}</span>
+          <div className="flex flex-wrap items-center gap-4 text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">
+            <span className="text-[var(--forest)]">{post.category}</span>
             <span aria-hidden="true">·</span>
             <time dateTime={post.date}>{formatPostDate(post.date)}</time>
             <span aria-hidden="true">·</span>
@@ -69,7 +69,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
 
         <div
           aria-hidden="true"
-          className="mx-auto mt-12 h-40 max-w-3xl sm:h-56"
+          className="cover-grain relative mx-auto mt-12 h-40 max-w-3xl sm:h-56"
           style={{ background: coverGradient(post.slug) }}
         />
 
@@ -94,7 +94,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
                 usually a good sign an intro call is worth thirty minutes.{" "}
                 <Link
                   href="/contact"
-                  className="border-b border-[var(--ink)] pb-0.5 text-[var(--ink)] transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)]"
+                  className="border-b border-[var(--ink)] pb-0.5 text-[var(--ink)] transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
                 >
                   Get in touch
                 </Link>
@@ -106,11 +106,11 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           {next && (
             <Reveal delay={1}>
               <nav aria-label="More writing" className="mt-16 border-t border-[var(--rule)] pt-8">
-                <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--ink-soft)]/70">
+                <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">
                   Read next
                 </p>
                 <Link href={`/blog/${next.slug}`} className="group mt-3 block">
-                  <h2 className="display text-2xl transition-colors group-hover:text-[var(--clay)] sm:text-3xl">
+                  <h2 className="display text-2xl transition-colors group-hover:text-[var(--forest)] sm:text-3xl">
                     {next.title}
                   </h2>
                   <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-[var(--ink-soft)]">
@@ -124,7 +124,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           <p className="mt-12">
             <Link
               href="/blog"
-              className="text-sm text-[var(--ink-soft)] transition-colors hover:text-[var(--clay)]"
+              className="text-sm text-[var(--ink-soft)] transition-colors hover:text-[var(--forest)]"
             >
               ← All writing
             </Link>

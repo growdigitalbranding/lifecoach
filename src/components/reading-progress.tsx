@@ -37,14 +37,14 @@ export function ReadingProgress({
       <div className="pointer-events-none sticky top-16 z-40">
         <div className="h-px w-full bg-transparent">
           <motion.div
-            className="h-px origin-left bg-[var(--gold)]"
+            className="h-px origin-left bg-[var(--brass)]"
             style={{ scaleX }}
             aria-hidden="true"
           />
         </div>
         <div className="mx-auto flex max-w-3xl justify-end px-6 pt-2">
           <span
-            className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--ink-soft)]/60"
+            className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]"
             // Announcing a number that changes on scroll would be constant
             // noise for a screen reader; the figure is a glanceable aid only.
             aria-hidden="true"

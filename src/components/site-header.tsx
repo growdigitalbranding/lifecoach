@@ -11,7 +11,7 @@ import {
   useScroll,
   useSpring,
 } from "motion/react";
-import { NAV, SITE } from "@/lib/content";
+import { BOOKING_URL, NAV, SITE } from "@/lib/content";
 
 /**
  * Site chrome: navigation, page scroll progress, and a header that gets out of
@@ -54,18 +54,18 @@ export function SiteHeader() {
 
   return (
     <motion.header
-      className="fixed inset-x-0 top-0 z-50 border-b border-[var(--rule)] bg-[var(--paper)]/85 backdrop-blur-md"
+      className="fixed inset-x-0 top-0 z-50 border-b border-[var(--rule)] bg-[var(--bone)]/85 backdrop-blur-md"
       animate={{ y: hidden && !reduced ? "-100%" : "0%" }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6">
         <Link
           href="/"
           className="display text-lg tracking-[-0.02em]"
           onClick={() => setMenuOpen(false)}
         >
           {SITE.name}
-          <span className="ml-2 hidden text-[11px] uppercase tracking-[0.22em] text-[var(--ink-soft)]/70 sm:inline">
+          <span className="ml-2 hidden text-[11px] uppercase tracking-[0.22em] text-[var(--muted)] sm:inline">
             {SITE.role}
           </span>
         </Link>
@@ -86,7 +86,7 @@ export function SiteHeader() {
                       // each link fading its own underline in and out.
                       <motion.span
                         layoutId="nav-active"
-                        className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--clay)]"
+                        className="absolute -bottom-0.5 left-0 h-px w-full bg-[var(--forest)]"
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       />
                     )}
@@ -97,6 +97,21 @@ export function SiteHeader() {
             })}
           </ul>
         </nav>
+
+        {/*
+          A persistent call to action. These are long, scroll-driven pages, and
+          a reader who decides at 70% depth previously had to hunt for an
+          inline text link. Styled solid so it does not read as a sixth nav
+          item, and it rides the existing hide-on-scroll behaviour — so it
+          comes back the instant someone scrolls up to look for it.
+        */}
+        <a
+          href={BOOKING_URL || "/contact"}
+          {...(BOOKING_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          className="hidden bg-[var(--forest)] px-5 py-2.5 text-xs uppercase tracking-[0.16em] text-[var(--on-forest)] transition-opacity hover:opacity-88 md:inline-block"
+        >
+          Book an intro call
+        </a>
 
         <button
           type="button"
@@ -111,7 +126,7 @@ export function SiteHeader() {
 
       {/* Page scroll progress. */}
       <motion.div
-        className="h-px origin-left bg-[var(--clay)]"
+        className="h-px origin-left bg-[var(--forest)]"
         style={{ scaleX: progress }}
         aria-hidden="true"
       />
@@ -140,6 +155,16 @@ export function SiteHeader() {
                   </Link>
                 </li>
               ))}
+              <li className="pt-4">
+                <a
+                  href={BOOKING_URL || "/contact"}
+                  {...(BOOKING_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  onClick={() => setMenuOpen(false)}
+                  className="block bg-[var(--forest)] px-5 py-3 text-center text-xs uppercase tracking-[0.16em] text-[var(--on-forest)]"
+                >
+                  Book an intro call
+                </a>
+              </li>
             </ul>
           </motion.nav>
         )}

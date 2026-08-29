@@ -15,7 +15,7 @@ export default function ServicesPage() {
     <>
       <section className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
         <Reveal>
-          <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">Services</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">Services</p>
         </Reveal>
         <Reveal delay={1}>
           <h1 className="display mt-6 max-w-3xl text-[clamp(2.5rem,6.5vw,5rem)]">
@@ -42,7 +42,7 @@ export default function ServicesPage() {
       >
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">
+            <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">
               However we start
             </p>
           </Reveal>
@@ -56,7 +56,7 @@ export default function ServicesPage() {
             {PROCESS.map((item, i) => (
               <Reveal key={item.step} as="li" delay={i}>
                 <div className="border-t border-[var(--ink)] pt-5">
-                  <span className="display text-4xl text-[var(--clay)]">{item.step}</span>
+                  <span className="display text-4xl text-[var(--forest)]">{item.step}</span>
                   <h3 className="mt-4 text-lg font-medium">{item.title}</h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-[var(--ink-soft)]">
                     {item.body}
@@ -74,7 +74,7 @@ export default function ServicesPage() {
               </p>
               <Link
                 href="/contact"
-                className="mt-6 inline-flex items-center gap-3 bg-[var(--ink)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--paper)] transition-colors hover:bg-[var(--clay)]"
+                className="mt-6 inline-flex items-center gap-3 bg-[var(--forest)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--on-forest)] transition-opacity hover:opacity-88"
               >
                 Book an intro call
                 <span aria-hidden="true">→</span>

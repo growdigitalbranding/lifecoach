@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "./gsap";
-import type { Service } from "@/lib/content";
+import { TESTIMONIALS, type Service } from "@/lib/content";
 
 /**
  * A service, held still while its detail scrolls past it.
@@ -90,21 +90,22 @@ export function PinnedService({ service, index }: { service: Service; index: num
   }, []);
 
   const headingId = `service-${service.slug}`;
+  const quote = TESTIMONIALS.find((t) => t.service === service.slug);
 
   return (
     <section
       aria-labelledby={headingId}
       className="border-t border-[var(--rule)]"
-      style={{ background: index % 2 === 0 ? "var(--paper)" : "var(--paper-deep)" }}
+      style={{ background: index % 2 === 0 ? "var(--bone)" : "var(--bone-deep)" }}
     >
       <div ref={pinRef} className="md:flex md:h-dvh md:min-h-[40rem] md:items-center">
         <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 md:grid-cols-12 md:gap-16 md:py-0">
           {/* The half that stays put. */}
           <div className="md:col-span-5">
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">
+            <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">
               {service.kicker}
             </p>
-            <h2 id={headingId} className="display mt-4 text-4xl sm:text-5xl">
+            <h2 id={headingId} className="display display--nobreak mt-4 text-4xl sm:text-5xl">
               {service.title}
             </h2>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-[var(--ink-soft)]">
@@ -114,7 +115,7 @@ export function PinnedService({ service, index }: { service: Service; index: num
             <dl className="mt-9 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-[var(--rule)] pt-6">
               {service.meta.map((row) => (
                 <div key={row.label}>
-                  <dt className="text-[11px] uppercase tracking-[0.18em] text-[var(--ink-soft)]/70">
+                  <dt className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
                     {row.label}
                   </dt>
                   <dd className="mt-1 text-sm font-medium">{row.value}</dd>
@@ -124,7 +125,7 @@ export function PinnedService({ service, index }: { service: Service; index: num
 
             <a
               href="/contact"
-              className="mt-9 inline-flex items-center gap-2 border-b border-[var(--ink)] pb-1 text-sm font-medium transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)]"
+              className="mt-9 inline-flex items-center gap-2 border-b border-[var(--ink)] pb-1 text-sm font-medium transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
             >
               {service.cta}
               <span aria-hidden="true">→</span>
@@ -136,10 +137,10 @@ export function PinnedService({ service, index }: { service: Service; index: num
             <div className="mb-6 hidden items-center gap-4 md:flex">
               <span className="font-mono text-xs tabular-nums text-[var(--ink-soft)]">
                 <span ref={stepRef}>01</span>
-                <span className="text-[var(--ink-soft)]/50"> / {String(service.panels.length).padStart(2, "0")}</span>
+                <span className="text-[var(--muted)]"> / {String(service.panels.length).padStart(2, "0")}</span>
               </span>
               <div className="h-px flex-1 bg-[var(--rule)]">
-                <div ref={barRef} className="h-px w-full origin-left scale-x-0 bg-[var(--clay)]" />
+                <div ref={barRef} className="h-px w-full origin-left scale-x-0 bg-[var(--forest)]" />
               </div>
             </div>
 
@@ -153,6 +154,26 @@ export function PinnedService({ service, index }: { service: Service; index: num
                 </div>
               ))}
             </div>
+
+            {/*
+              The pinned block holds the reader for two viewport-heights, and
+              below the panels there was nothing but empty column. A quote for
+              this specific service is the most useful thing that can occupy
+              it — and while there are none, this renders nothing rather than
+              reserving blank space.
+            */}
+            {quote && (
+              <figure className="mt-10 hidden border-t border-[var(--rule)] pt-6 md:block">
+                <blockquote className="max-w-xl text-[15px] leading-relaxed text-[var(--ink-soft)]">
+                  &ldquo;{quote.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-3 text-[13px] text-[var(--muted)]">
+                  <span className="font-medium text-[var(--ink)]">{quote.name}</span>
+                  {" — "}
+                  {quote.role}
+                </figcaption>
+              </figure>
+            )}
           </div>
         </div>
       </div>

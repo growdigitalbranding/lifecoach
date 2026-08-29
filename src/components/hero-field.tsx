@@ -61,7 +61,7 @@ const VERTEX_SHADER = /* glsl */ `
 
 const FRAGMENT_SHADER = /* glsl */ `
   uniform vec3 uInk;
-  uniform vec3 uClay;
+  uniform vec3 uForest;
 
   varying float vAlpha;
   varying float vSeed;
@@ -75,7 +75,7 @@ const FRAGMENT_SHADER = /* glsl */ `
 
     // A minority of points carry the accent colour so the field has warmth
     // without turning into confetti.
-    vec3 color = mix(uInk, uClay, step(0.85, vSeed));
+    vec3 color = mix(uInk, uForest, step(0.85, vSeed));
     gl_FragColor = vec4(color, vAlpha * edge);
   }
 `;
@@ -150,8 +150,8 @@ export function HeroField({ className }: { className?: string }) {
       uTime: { value: 0 },
       uSize: { value: 3.2 },
       uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-      uInk: { value: new THREE.Color("#2b241f") },
-      uClay: { value: new THREE.Color("#b8563a") },
+      uInk: { value: new THREE.Color("#2a3129") },
+      uForest: { value: new THREE.Color("#1d4034") },
     };
 
     const material = new THREE.ShaderMaterial({

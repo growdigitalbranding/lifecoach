@@ -24,7 +24,7 @@ export default function ContactPage() {
     <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
       <div className="grid gap-16 md:grid-cols-12 md:gap-20">
         <header className="md:col-span-5">
-          <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">Contact</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">Contact</p>
           <h1 className="display mt-6 text-[clamp(2.5rem,5.5vw,4.25rem)]">
             Tell me what&apos;s going on.
           </h1>
@@ -36,7 +36,7 @@ export default function ContactPage() {
           <dl className="mt-12 space-y-6 border-t border-[var(--rule)] pt-8">
             {EXPECTATIONS.map((item) => (
               <div key={item.label}>
-                <dt className="text-[11px] uppercase tracking-[0.18em] text-[var(--ink-soft)]/70">
+                <dt className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
                   {item.label}
                 </dt>
                 <dd className="mt-1 text-[15px]">{item.value}</dd>
@@ -48,7 +48,7 @@ export default function ContactPage() {
             <p>
               <a
                 href={`mailto:${SITE.email}`}
-                className="border-b border-[var(--rule)] pb-0.5 transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)]"
+                className="border-b border-[var(--rule)] pb-0.5 transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
               >
                 {SITE.email}
               </a>
@@ -56,12 +56,12 @@ export default function ContactPage() {
             <p>
               <a
                 href={`tel:${SITE.phone.replace(/[^\d+]/g, "")}`}
-                className="border-b border-[var(--rule)] pb-0.5 transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)]"
+                className="border-b border-[var(--rule)] pb-0.5 transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
               >
                 {SITE.phone}
               </a>
             </p>
-            <p className="pt-2 text-[var(--ink-soft)]/70">{SITE.location}</p>
+            <p className="pt-2 text-[var(--muted)]">{SITE.location}</p>
           </div>
         </header>
 

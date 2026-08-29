@@ -4,7 +4,7 @@ import { NAV } from "@/lib/content";
 export default function NotFound() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-32 sm:py-40">
-      <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">404</p>
+      <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">404</p>
       <h1 className="display mt-6 max-w-2xl text-[clamp(2.5rem,6vw,4.5rem)]">
         That page isn&apos;t here.
       </h1>
@@ -17,7 +17,7 @@ export default function NotFound() {
           <li key={item.href} className="border-b border-[var(--rule)]">
             <Link
               href={item.href}
-              className="block py-4 text-lg transition-colors hover:text-[var(--clay)]"
+              className="block py-4 text-lg transition-colors hover:text-[var(--forest)]"
             >
               {item.label}
             </Link>

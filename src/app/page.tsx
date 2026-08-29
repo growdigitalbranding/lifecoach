@@ -1,47 +1,40 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AboutHero } from "@/components/about-hero";
-import { Principles } from "@/components/principles";
-import { HorizontalTimeline } from "@/components/horizontal-timeline";
+import { Testimonials } from "@/components/testimonials";
 import { Reveal } from "@/components/reveal";
-import { SITE } from "@/lib/content";
+import { BOOKING_URL, SERVICES, SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "About",
-  description:
-    "A small coaching practice in Oakland — six-month one-on-one engagements and keynotes on the cost of a career that only makes sense from the outside.",
+  title: `${SITE.name} — ${SITE.role}`,
+  description: SITE.tagline,
 };
 
 /**
- * PLACEHOLDER CONTENT — replace before this site goes live.
+ * The front door.
  *
- * These are facts about how the practice operates, deliberately not
- * credentials. Accreditations are the one thing on a coaching site a
- * prospective client will actually verify, and claiming one the coach does not
- * hold is a real problem rather than a copy problem — so this block asserts
- * nothing that could be false.
+ * This used to be the About page — hero, then five hundred words of biography
+ * before any offer or proof appeared. About pages convert well for people who
+ * already trust you; as a homepage it asked a stranger to read a career story
+ * before finding out what was sold or what it cost.
  *
- * When you have the genuine credentials, put them here: the accrediting body
- * and the exact designation ("ICF — Associate Certified Coach, 2021"), training
- * hours, supervision. Anything you would be comfortable being asked to evidence.
+ * The order here follows the questions a coaching buyer actually asks: is this
+ * for me, who says so, what exactly is it and what does it cost, what is the
+ * smallest step I can take. The full story now lives at /about for the people
+ * who want it.
  */
-const PRACTICE_FACTS = [
-  { label: "Twelve clients, capped", detail: "Deliberately, permanently" },
-  { label: "Six months, then an ending", detail: "No open-ended retainers" },
-  { label: "Oakland, California", detail: "Video by default, walking sessions if you're local" },
-  { label: "Confidential, without exception", detail: "Nothing from a session is shared or written about" },
-];
-
-export default function AboutPage() {
+export default function HomePage() {
   return (
     <>
       <AboutHero />
 
-      {/* The thesis, stated plainly and without animation on the text itself. */}
-      <section className="border-t border-[var(--rule)] py-24 sm:py-32">
+      {/* 1 — is this for me? */}
+      <section className="border-t border-[var(--rule)] py-24 sm:py-28">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-4">
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--clay)]">Who this is for</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">
+              Who this is for
+            </p>
           </Reveal>
           <div className="md:col-span-8">
             <Reveal>
@@ -51,65 +44,108 @@ export default function AboutPage() {
               </p>
             </Reveal>
             <Reveal delay={1}>
-              <div className="mt-8 max-w-2xl space-y-5 text-[15px] leading-relaxed text-[var(--ink-soft)] sm:text-base">
-                <p>
-                  They&apos;re competent, promoted, well-reviewed, and quietly aware
-                  that the next ten years look exactly like the last three. Nothing
-                  is wrong enough to act on. That&apos;s precisely what makes it
-                  hard to leave.
-                </p>
-                <p>
-                  I coach people through the decisions that don&apos;t have a
-                  spreadsheet answer — a pivot, a first leadership role, the
-                  reckoning that tends to arrive around a birthday. Six months,
-                  twenty-four sessions, a defined ending. Then you get on with it
-                  without me.
-                </p>
-                <p>
-                  I was on the other side of this in 2019, six years into an
-                  operations career I was good at and had stopped caring about. It
-                  took a stranger asking one well-aimed question to unstick it. This
-                  practice is my attempt to be that stranger, more reliably.
-                </p>
-              </div>
+              <p className="mt-8 max-w-2xl text-[15px] leading-relaxed text-[var(--ink-soft)] sm:text-base">
+                Competent, promoted, well-reviewed, and quietly aware that the
+                next ten years look exactly like the last three. Nothing is
+                wrong enough to act on — which is precisely what makes it hard
+                to leave.
+              </p>
+            </Reveal>
+            <Reveal delay={2}>
+              <Link
+                href="/about"
+                className="mt-8 inline-flex items-center gap-2 border-b border-[var(--ink)] pb-1 text-sm font-medium transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
+              >
+                More about how I work
+                <span aria-hidden="true">→</span>
+              </Link>
             </Reveal>
           </div>
         </div>
       </section>
 
-      <Principles />
+      {/* 2 — who says so? Renders nothing until real quotes exist. */}
+      <Testimonials className="border-t border-[var(--rule)] py-24 sm:py-28" />
 
-      <HorizontalTimeline />
+      {/* 3 — what is it, and what does it cost? Prices up front, deliberately. */}
+      <section
+        aria-labelledby="services-heading"
+        className="border-t border-[var(--rule)] bg-[var(--bone-deep)] py-24 sm:py-28"
+      >
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal>
+            <p className="text-xs uppercase tracking-[0.28em] text-[var(--forest)]">
+              Two things, done properly
+            </p>
+          </Reveal>
+          <Reveal delay={1}>
+            <h2 id="services-heading" className="display mt-4 max-w-2xl text-4xl sm:text-5xl">
+              What I actually do
+            </h2>
+          </Reveal>
 
+          <div className="mt-14 grid gap-10 md:grid-cols-2 md:gap-14">
+            {SERVICES.map((service, i) => {
+              const investment = service.meta.find((m) => m.label === "Investment");
+              return (
+                <Reveal key={service.slug} delay={i}>
+                  <div className="flex h-full flex-col border-t border-[var(--ink)] pt-6">
+                    <h3 className="display display--nobreak text-3xl">{service.title}</h3>
+                    <p className="mt-4 flex-1 text-[15px] leading-relaxed text-[var(--ink-soft)]">
+                      {service.summary}
+                    </p>
+                    {investment && (
+                      <p className="mt-6 text-sm font-medium">{investment.value}</p>
+                    )}
+                    <Link
+                      href="/services"
+                      className="mt-4 inline-flex items-center gap-2 self-start border-b border-[var(--ink)] pb-1 text-sm transition-colors hover:border-[var(--forest)] hover:text-[var(--forest)]"
+                    >
+                      What&apos;s involved
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4 — the smallest possible next step. */}
       <section className="border-t border-[var(--rule)] py-24 sm:py-28">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
-            <h2 className="display text-3xl sm:text-4xl">How the practice runs</h2>
+            <h2 className="display max-w-2xl text-[clamp(2rem,4.5vw,3.25rem)]">
+              Start with a conversation that costs you nothing.
+            </h2>
           </Reveal>
-          <dl className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {PRACTICE_FACTS.map((item, i) => (
-              <Reveal key={item.label} delay={i}>
-                <div className="border-t border-[var(--ink)] pt-4">
-                  <dt className="text-base font-medium">{item.label}</dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-                    {item.detail}
-                  </dd>
-                </div>
-              </Reveal>
-            ))}
-          </dl>
-
-          <Reveal delay={2}>
-            <p className="mt-14 max-w-2xl text-[15px] leading-relaxed text-[var(--ink-soft)]">
-              {SITE.bookingWindow}{" "}
-              <Link
-                href="/contact"
-                className="border-b border-[var(--ink)] pb-0.5 text-[var(--ink)] transition-colors hover:border-[var(--clay)] hover:text-[var(--clay)]"
-              >
-                The intro call is thirty minutes and free
-              </Link>
-              , and about a third of them end with me pointing you somewhere else.
+          <Reveal delay={1}>
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-[var(--ink-soft)]">
+              Thirty minutes, free, genuinely no pitch. About a third of these
+              end with me recommending someone else — a therapist, a career
+              counsellor, a different coach. That&apos;s a good outcome.
             </p>
+          </Reveal>
+          <Reveal delay={2}>
+            <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href={BOOKING_URL || "/contact"}
+                {...(BOOKING_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="inline-flex items-center gap-3 bg-[var(--forest)] px-7 py-4 text-sm uppercase tracking-[0.18em] text-[var(--on-forest)] transition-opacity hover:opacity-88"
+              >
+                Book an intro call
+                <span aria-hidden="true">→</span>
+              </a>
+              {BOOKING_URL && (
+                <Link
+                  href="/contact"
+                  className="text-sm text-[var(--muted)] transition-colors hover:text-[var(--forest)]"
+                >
+                  Or write to me first
+                </Link>
+              )}
+            </div>
           </Reveal>
         </div>
       </section>

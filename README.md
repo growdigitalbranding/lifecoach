@@ -25,17 +25,27 @@ usually would. Replace all of it before this is pointed at a real domain:
 | Services, pricing, process | `SERVICES` / `PROCESS` in `src/lib/content.ts` |
 | Journal posts | `POSTS` in `src/lib/content.ts` |
 | FAQ | `FAQ_SECTIONS` in `src/lib/content.ts` |
-| Practice facts | `PRACTICE_FACTS` in `src/app/page.tsx` |
+| Practice facts | `PRACTICE_FACTS` in `src/app/about/page.tsx` |
+
+Four things are wired up and waiting on content. Each renders **nothing** until
+it is filled in, so the site never shows an invented placeholder:
+
+| Set this | To get |
+| --- | --- |
+| `PORTRAIT` in `src/lib/content.ts` | A real photograph in the About page, replacing the generative field |
+| `TESTIMONIALS` | The homepage proof band, plus a quote inside each pinned service |
+| `CREDENTIALS` | The training and accreditation block on About |
+| `BOOKING_URL` | Direct scheduling from the header CTA, with the form as the alternative |
 
 Two of those need more care than a find-and-replace.
 
-**Credentials.** The site deliberately claims no accreditation anywhere. The
-About page lists how the practice operates instead — client cap, engagement
-length, location. Accreditation is the one claim on a coaching site a
-prospective client will actually check, and naming a body the coach is not
-registered with is a legal and professional problem rather than a copy mistake.
-Add real credentials to `PRACTICE_FACTS` once you have the exact designation and
-year, and only what you could evidence on request.
+**Credentials.** The site claims no accreditation anywhere, and the About page
+lists how the practice operates instead — client cap, engagement length,
+confidentiality. Accreditation is the one claim on a coaching site a prospective
+client will actually check, and naming a body the coach is not registered with
+is a legal and professional problem rather than a copy mistake. Fill in
+`CREDENTIALS` with the exact designation and year once it exists, and only what
+could be evidenced on request.
 
 **Contact details.** `SITE.email` and `SITE.phone` are placeholders — the phone
 number is in the reserved `555` range and the domain is not registered to this

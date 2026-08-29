@@ -1,9 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Maren Vale">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sheeba Frank Charles">
   <rect width="64" height="64" fill="#14110f"/>
-  <!-- An M and a V sharing a stroke: the monogram, drawn rather than set,
-       so it stays legible at 16px where a serif face would not. -->
-  <path d="M12 44V20l10 14 10-14v24" fill="none" stroke="#f7f2ea" stroke-width="4"
-        stroke-linecap="square" stroke-linejoin="miter"/>
-  <path d="M38 20l7 24 7-24" fill="none" stroke="#b8563a" stroke-width="4"
-        stroke-linecap="square" stroke-linejoin="miter"/>
+  <!-- Drawn rather than set in Fraunces: a serif S loses its counters at 16px,
+       where a favicon actually gets looked at. -->
+  <path d="M41 21c-3-2.6-7-4-11-4-5.5 0-9 2.6-9 6.6 0 3.7 2.8 5.6 9.2 7.3 7 1.9 10.8 4.2 10.8 9.4 0 5.6-4.8 8.7-11.6 8.7-4.6 0-8.7-1.5-11.4-4.2"
+        fill="none" stroke="#f7f2ea" stroke-width="4.4" stroke-linecap="round"/>
+  <path d="M32 12v40" fill="none" stroke="#b8563a" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
 </svg>

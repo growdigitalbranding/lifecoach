@@ -1,6 +1,6 @@
-# Maren Vale
+# Sheeba Frank Charles
 
-Marketing site for Maren Vale, a life and leadership coach. Five pages, built
+Marketing site for Sheeba Frank Charles, a life and leadership coach. Five pages, built
 around scroll as the primary interaction.
 
 - **About** (`/`) — the front door: hero, principles, career timeline
@@ -11,10 +11,11 @@ around scroll as the primary interaction.
 
 ## Before you launch
 
-**The copy that ships with this repo is a placeholder persona.** "Maren Vale",
-the biography, the timeline and the journal posts were written to build the site
-against, not to describe a real coach. Replace them before this is pointed at a
-real domain:
+**The business name is real; everything written about the coach is not.** The
+biography, career timeline, journal posts, prices and location were written to
+build the site against. They describe an invented person, and they are now
+attached to a real name — so they carry more weight than placeholder copy
+usually would. Replace all of it before this is pointed at a real domain:
 
 | What | Where |
 | --- | --- |

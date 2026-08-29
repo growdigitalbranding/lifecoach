@@ -7,10 +7,12 @@
  */
 
 export const SITE = {
-  name: "Maren Vale",
+  name: "Sheeba Frank Charles",
   role: "Life & Leadership Coach",
   tagline: "Coaching for people in the middle of becoming.",
-  email: "hello@marenvale.co",
+  // PLACEHOLDER — the contact form delivers here. Replace with a real,
+  // monitored address before launch or enquiries go nowhere.
+  email: "hello@sheebafrankcharles.com",
   phone: "+1 (415) 555-0188",
   location: "Oakland, California — and anywhere with a good connection",
   bookingWindow: "Currently taking four new one-on-one clients for the spring cohort.",
